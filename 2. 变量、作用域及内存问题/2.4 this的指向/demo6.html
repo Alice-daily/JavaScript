@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>箭头函数中的this</title>
+</head>
+
+<body>
+    <script>
+        // ① this指向箭头函数定义时所处的外部环境
+        function Timer() {
+            this.s1 = 0; // this指向实例对象
+            this.s2 = 0; // this指向实例对象
+            setInterval(() => {
+                this.s1++; // this绑定定义时所在的环境，即Timer函数
+            }, 1000);
+            setInterval(function() {
+                this.s2++; // this指向运行时所处的环境，这里指向全局对象
+            }, 1000)
+        }
+
+        var timer = new Timer();
+        setTimeout(() => {
+            console.log(timer.s1); // 3
+        }, 3100);
+        setTimeout(() => {
+            console.log(timer.s2); // 0
+        }, 3100);
+
+        // ② 箭头函数的this指向无法通过bind/call/apply等函数进行改变
+        var val = (function() {
+            return (() => this.x).bind({
+                x: 'inner'
+            })();
+        }).call({
+            x: 'outer'
+        });
+        console.log(val); // outer => this指向外层的{ x: 'outer' }
+    </script>
+</body>
+
+</html>

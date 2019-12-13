@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>构造函数以及类方法中的this指向</title>
+</head>
+
+<body>
+    <script>
+        // 1. 如果一个构造函数或者类方法中存在this，那么this指向由构造函数或者类方法创建出来的实例对象
+        function Person1() {
+            this.name = 'Lily';
+        }
+        var person1 = new Person1();
+        console.log(person1.name); // Lily
+
+        class Person2 {
+            constructor() {
+                this.name = 'Lucy';
+                // return '';
+                // return null;
+                // return undefined;
+            }
+        }
+        var person2 = new Person2();
+        console.log(person2.name); // Lucy
+
+        // 2. 如果一个构造函数或者类方法中存在this，且显示返回了引用类型的数据，那么this指向函数返回的对象
+        function Person3() {
+            this.name = 'Lily';
+            return null;
+            // return undefined;
+            // return ''; 
+        }
+        var person3 = new Person3();
+        console.log(person3.name); // Lily => 显示返回基本类型的数据,没有影响
+
+        function Person4() {
+            this.name = 'Lily';
+            return function() {}
+        }
+        var person4 = new Person4();
+        console.log(person4.name); // '' => 显示返回引用类型的数据时,this指向函数返回值,这里返回的是一个匿名函数,函数有name属性,表示函数名,因此person4.name为空字符串
+
+        class Person5 {
+            constructor() {
+                this.name = 'Lucy';
+                return {};
+            }
+        }
+        var person5 = new Person5();
+        console.log(person5.name); // undefined => 显示返回{},该对象中没有name属性,因此person5.name为undefined
+    </script>
+</body>
+
+</html>

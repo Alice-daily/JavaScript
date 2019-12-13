@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>以对象方法的形式进行调用</title>
+</head>
+
+<body>
+    <script>
+        // ① 如果一个函数中存在this，并且它是以对象方法的形式调用的，那么this指向调用该函数的对象；
+        var a1 = 1;
+        var obj1 = {
+            a1: 2,
+            fn: function() {
+                console.log(this.a1); // 2
+            }
+        }
+        obj1.fn();
+
+        var a2 = 1;
+        var obj2 = {
+            a2: 2,
+            fn: function() {
+                return this.a2;
+            }
+        }
+        var f2 = obj2.fn;
+        console.log(f2()); // 1
+
+        var a3 = 1;
+        var obj3 = {
+            a3: 2,
+            fn: function() {
+                return this.a3;
+            }
+        }
+        var f3 = obj3.fn();
+        console.log(f3); // 2
+
+        // ② 如果一个函数中存在this，并且包含该函数的对象同时也被另一个对象所包含，
+        //   尽管这个函数是被最外层对象所调用的，但是this指向该函数的上一级对象；
+        var a4 = 1;
+        var obj4 = {
+            a4: 2,
+            b: {
+                a4: 3,
+                fn: function() {
+                    console.log(this.a4);
+                }
+            }
+
+        }
+        obj4.b.fn(); // 3
+
+        var a5 = 1;
+        var obj5 = {
+            a5: 2,
+            b: {
+                fn: function() {
+                    console.log(this.a5);
+                }
+            }
+
+        }
+        obj5.b.fn(); // undefined
+    </script>
+</body>
+
+</html>

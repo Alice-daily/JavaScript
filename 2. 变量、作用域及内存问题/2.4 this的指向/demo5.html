@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绑定函数调用模式</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            a: 2,
+            fn: function() {
+                console.log(this.a)
+            }
+        };
+        obj.fn(); // 2 => this指向obj
+        var foo = obj.fn;
+        foo(); // undefined => this指向window，严格模式下会报错
+        var foo2 = obj.fn.bind(obj);
+        foo2(); // 2 => this指向obj
+
+        // 使用apply或者call函数无法改变一个绑定函数的上下文，甚至是再次使用bind进行绑定也不会改变。
+        var obj2 = {
+            a: 3
+        };
+        foo2.call(obj2); // 2 => this指向obj
+        foo2.apply(obj2); // 2 => this指向obj
+        foo2.bind(obj2)(); // 2 => this指向obj
+
+        // 只有绑定函数的构造函数调用才能改变绑定函数的上下文，但是不推荐这种做法
+        new foo2(obj2); // undefined
+    </script>
+</body>
+
+</html>

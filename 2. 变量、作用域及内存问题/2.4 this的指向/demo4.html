@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>call/apply调用模式</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+                name: 'Lily',
+                age: 1
+            },
+            name = 'Lucy',
+            age = 2;
+
+        function fn(province, city) {
+            console.log(this.name, this.age, province, city)
+        }
+        fn('安徽', '合肥'); // Lucy 2 安徽 合肥 => this指向全局对象
+        fn.call(obj, '浙江', '杭州'); // Lily 1 浙江 杭州 => this指向obj
+        fn.call(null, '安徽', '合肥'); // Lucy 2 安徽 合肥 => this指向全局对象
+        fn.apply(obj, ['浙江', '杭州']); // this指向obj
+        fn.apply(undefined, ['安徽', '合肥']); // Lucy 2 安徽 合肥 => this指向全局对象
+
+        // 利用call或apply实现继承
+        function Person(name) {
+            this.name = name;
+            console.log(this instanceof Student); // true
+        }
+
+        function Student(name, age) {
+            Person.call(this, name); // this指向Student的实例对象
+            this.age = age;
+            console.log(this instanceof Student); // true
+        }
+
+        var student = new Student('Jack', 18);
+        console.log(student); // Student {name: "Jack", age: 18}
+    </script>
+</body>
+
+</html>

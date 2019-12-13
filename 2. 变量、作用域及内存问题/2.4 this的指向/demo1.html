@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>直接以函数名的形式进行调用</title>
+</head>
+
+<body>
+    <script>
+        var a1 = 1;
+
+        function fn1() {
+            var a1 = 2;
+            console.log(this.a1); // 1
+            console.log(this); // Window
+        }
+        fn1();
+
+        // ****************************************
+
+        function fn2() {
+            var a2 = 2;
+            console.log(this.a2); // undefined
+            console.log(this); // Window
+        }
+        fn2();
+
+        // ****************************************
+
+        function fn3() {
+            var a3 = 3;
+
+            function foo() {
+                console.log(this.a3); // undefined => this的指向是在调用时确定的，因此这里指向全局环境
+                console.log(this); // Window
+            }
+            foo();
+
+        }
+        fn3();
+
+        // ****************************************
+
+        let a4 = 4;
+
+        function fn4() {
+            let a4 = 4;
+            console.log(this.a4); // undefined
+            console.log(this); // Window
+        }
+        fn4();
+    </script>
+</body>
+
+</html>
