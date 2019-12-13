@@ -10,7 +10,7 @@
 
 <body>
     <script>
-        // 1. 如果一个构造函数或者类方法中存在this，那么this指向由构造函数或者类方法创建出来的实例对象
+        // ① 如果一个构造函数或者类方法中存在this，那么this指向由构造函数或者类方法创建出来的实例对象
         function Person1() {
             this.name = 'Lily';
         }
@@ -28,7 +28,7 @@
         var person2 = new Person2();
         console.log(person2.name); // Lucy
 
-        // 2. 如果一个构造函数或者类方法中存在this，且显示返回了引用类型的数据，那么this指向函数返回的对象
+        // ② 如果一个构造函数或者类方法中存在this，且显示返回了引用类型的数据，那么this指向函数返回的对象
         function Person3() {
             this.name = 'Lily';
             return null;
