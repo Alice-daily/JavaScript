@@ -12,5 +12,5 @@
 - ##### [2.2 执行上下文](https://github.com/Alice-daily/JavaScript/tree/master/2.%20%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/2.2%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87)
 - ##### [2.3 作用域与作用域链](https://github.com/Alice-daily/JavaScript/tree/master/2.%20%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/2.3%20%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE)
 - ##### [2.4 this的指向](https://github.com/Alice-daily/JavaScript/tree/master/2.%20%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/2.4%20this%E7%9A%84%E6%8C%87%E5%90%91)
-- ##### 2.5 闭包
+- ##### [2.5 闭包](https://github.com/Alice-daily/JavaScript/tree/master/2.%20%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/2.5%20%E9%97%AD%E5%8C%85)
 - ##### 2.6 JS内存管理机制
